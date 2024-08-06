@@ -31,11 +31,15 @@ const NewsFeed: React.FC = () => {
   useEffect(() => {
     if (socket) {
       socket.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-        if (data.message) {
-          setPosts((prevPosts) => [data.message, ...prevPosts]);
-        } else {
-          console.error('WebSocket error: No message field in response');
+        try {
+          const data = JSON.parse(event.data);
+          if (data.message) {
+            setPosts((prevPosts) => [data.message, ...prevPosts]);
+          } else {
+            console.error('WebSocket error: No message field in response');
+          }
+        } catch (error) {
+          console.error('WebSocket message error:', error);
         }
       };
 

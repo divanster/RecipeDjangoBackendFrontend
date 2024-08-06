@@ -1,8 +1,18 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const CustomNavbar: React.FC = () => {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        // Clear user session or token here
+        localStorage.removeItem('token');
+        // Redirect to login page
+        navigate('/login');
+    };
+
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <LinkContainer to="/">
@@ -22,9 +32,9 @@ const CustomNavbar: React.FC = () => {
                             <NavDropdown.Item>Settings</NavDropdown.Item>
                         </LinkContainer>
                         <NavDropdown.Divider />
-                        <LinkContainer to="/logout">
-                            <NavDropdown.Item>Logout</NavDropdown.Item>
-                        </LinkContainer>
+                        <NavDropdown.Item onClick={handleLogout}>
+                            Logout
+                        </NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
