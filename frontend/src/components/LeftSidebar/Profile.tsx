@@ -1,10 +1,10 @@
-// frontend/src/components/LeftSidebar/Profile.tsx
 import React from 'react';
+// import './Profile.css'; // Assuming you have a CSS file for styling
 
 const Profile: React.FC = () => {
     return (
         <div className="profile">
-            <img src="/path/to/profile-pic.jpg" alt="Profile" className="img-fluid rounded-circle" />
+            <img src="/default_images/profile_picture.png" alt="Profile" className="img-fluid rounded-circle" />
             <h3>Your Name</h3>
             <ul>
                 <li>Friends</li>
